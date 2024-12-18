@@ -1,0 +1,49 @@
+<div class="header">
+  <div class="logo">DevSuite Hub</div>
+  <button class="toggle">Light/Dark Mode</button>
+</div>
+
+<div class="hero">
+  <h1>Find the Perfect Tool</h1>
+  <p>Discover tools to streamline your development workflow.</p>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search for tools..."
+      (input)="searchTools($event)"
+    />
+    <button (click)="resetFilters()">Reset</button>
+  </div>
+</div>
+
+<div class="categories">
+  <h2>Categories</h2>
+  <div class="category-list">
+    <div
+      *ngFor="let category of categories"
+      class="category"
+      (click)="filterByCategory(category)"
+    >
+      {{ category }}
+    </div>
+  </div>
+</div>
+
+<div class="card-grid">
+  <div
+    *ngFor="let tool of filteredTools"
+    class="card"
+    (click)="openTool(tool.url)"
+  >
+    <h3>{{ tool.name }}</h3>
+    <p>{{ tool.description }}</p>
+    <div class="tags">
+      <span *ngFor="let tag of tool.tags" class="tag">{{ tag }}</span>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>&copy; 2024 DevSuite Hub. All rights reserved.</p>
+</div>
